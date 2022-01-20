@@ -1,7 +1,7 @@
 {
   "name": "@web3-systems/multichain-in-memory-database",
-  "description": "A client side libtrary to cache EVM multichain state.",
-  "version": "0.1.0-beta.1",
+  "description": "In-memory database for multichain EVM state: transactions, receipts, logs and memoized computes.",
+  "version": "0.1.0-beta.2",
   "license": "MIT",
   "author": "Kames Geraghty",
   "module": "dist/multichain-in-memory-database.esm.js",

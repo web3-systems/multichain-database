@@ -3,7 +3,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/web3-systems/multichain-in-memory-database/badge.svg?branch=main)](https://coveralls.io/github/web3-systems/multichain-in-memory-database?branch=main)
 ![ts](https://badgen.net/badge/-/TypeScript?icon=typescript&label&labelColor=blue&color=555555)
 [![GPLv3 license](https://img.shields.io/badge/License-MIT-blue.svg)](http://perso.crans.org/besson/LICENSE.html)
-![npm](https://img.shields.io/npm/v/@web3-systems/multichain-in-memory-database3)
+![npm](https://img.shields.io/npm/v/@web3-systems/multichain-in-memory-database)
 
 The `@web3-systems/multichain-in-memory-database` [node module](https://www.npmjs.com/package/@web3-systems/multichain-in-memory-database) is an in-memory database for multichain EVM state: transactions, receipts, logs and memoized computes.
 
