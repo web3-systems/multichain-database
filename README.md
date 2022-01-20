@@ -5,7 +5,7 @@
 [![GPLv3 license](https://img.shields.io/badge/License-MIT-blue.svg)](http://perso.crans.org/besson/LICENSE.html)
 ![npm](https://img.shields.io/npm/v/@web3-systems/multichain-in-memory-database3)
 
-The `@web3-systems/multichain-in-memory-database` [node module](https://www.npmjs.com/package/@web3-systems/multichain-in-memory-database)] is an in-memory database for multichain EVM state: transactions, receipts, logs and memoized computes.
+The `@web3-systems/multichain-in-memory-database` [node module](https://www.npmjs.com/package/@web3-systems/multichain-in-memory-database) is an in-memory database for multichain EVM state: transactions, receipts, logs and memoized computes.
 
 Blockchain state is loaded into the memory for high-performance queries in both the browser and backend systems.
 
