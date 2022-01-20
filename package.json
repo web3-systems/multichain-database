@@ -1,0 +1,53 @@
+{
+  "name": "@web3-systems/multichain-cache",
+  "description": "A client side libtrary to cache EVM multichain state.",
+  "version": "0.1.0-beta.1",
+  "license": "MIT",
+  "author": "Kames Geraghty",
+  "module": "dist/multichain-cache.esm.js",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "scripts": {
+    "start": "tsdx watch",
+    "build": "tsdx build",
+    "test": "tsdx test",
+    "lint": "tsdx lint",
+    "prepare": "tsdx build",
+    "docs": "yarn typedoc src/index.ts --out docs"
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
+  "engines": {
+    "node": ">=10"
+  },
+  "peerDependencies": {},
+  "dependencies": {
+    "@types/lodash": "^4.14.178",
+    "axios": "^0.24.0",
+    "lodash": "^4.17.21",
+    "lokijs": "^1.5.12",
+    "query-string": "^7.0.1"
+  },
+  "devDependencies": {
+    "@types/lokijs": "^1.5.7",
+    "husky": "^7.0.4",
+    "tsdx": "^0.14.1",
+    "tslib": "^2.3.1",
+    "typedoc": "^0.22.10",
+    "typedoc-plugin-markdown": "^3.11.8",
+    "typescript": "^4.5.4"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "tsdx lint"
+    }
+  },
+  "prettier": {
+    "printWidth": 80,
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "es5"
+  }
+}
