@@ -1,10 +1,10 @@
 # Multichain Database
 
-![Build](https://github.com/web3-systems/multichain-database/actions/workflows/main.yml/badge.svg)
-[![Coverage Status](https://coveralls.io/repos/github/web3-systems/multichain-database/badge.svg?branch=main)](https://coveralls.io/github/web3-systems/multichain-database?branch=main)
-![ts](https://badgen.net/badge/-/TypeScript?icon=typescript&label&labelColor=blue&color=555555)
+![CI](https://github.com/web3-systems/multichain-database/actions/workflows/main.yml/badge.svg)
+![TS](https://badgen.net/badge/-/TypeScript?icon=typescript&label&labelColor=blue&color=555555)
 [![GPLv3 license](https://img.shields.io/badge/License-MIT-blue.svg)](http://perso.crans.org/besson/LICENSE.html)
-![npm](https://img.shields.io/npm/v/@web3-systems/multichain-database)
+[![Version](https://img.shields.io/npm/v/@web3-systems/multichain-database.svg)](https://npmjs.org/package/@web3-systems/multichain-database)
+[![Downloads/week](https://img.shields.io/npm/dw/@web3-systems/multichain-database.svg)](https://npmjs.org/package/@web3-systems/multichain-database)
 
 The `@web3-systems/multichain-database` [node module](https://www.npmjs.com/package/@web3-systems/multichain-database) is an in-memory database for multichain EVM state: transactions, receipts, logs and memoized computes.
 
