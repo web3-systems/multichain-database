@@ -2,92 +2,39 @@
 <a href="#multichain-database" id="multichain-database" style="color: inherit; text-decoration: none;">
   <h1>Multichain Database</h1>
 </a>
-<p><img src="https://github.com/web3-systems/multichain-database/actions/workflows/main.yml/badge.svg" alt="Build">
-<a href="https://coveralls.io/github/web3-systems/multichain-database?branch=main"><img src="https://coveralls.io/repos/github/web3-systems/multichain-database/badge.svg?branch=main" alt="Coverage Status"></a>
-<img src="https://badgen.net/badge/-/TypeScript?icon=typescript&label&labelColor=blue&color=555555" alt="ts">
+<p><img src="https://github.com/web3-systems/multichain-database/actions/workflows/main.yml/badge.svg" alt="CI">
+<img src="https://badgen.net/badge/-/TypeScript?icon=typescript&label&labelColor=blue&color=555555" alt="TS">
 <a href="http://perso.crans.org/besson/LICENSE.html"><img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="GPLv3 license"></a>
-<img src="https://img.shields.io/npm/v/@web3-systems/multichain-database" alt="npm"></p>
-<p>The <code>@web3-systems/multichain-database</code> <a href="https://www.npmjs.com/package/@web3-systems/multichain-database">node module</a> is an in-memory database for multichain EVM state: transactions, receipts, logs and memoized computes.</p>
-<p>Blockchain state is loaded into the memory for high-performance queries in both the browser and backend systems.</p>
-<p>To learn more about indexing, queries, DynamicViews and other database related features reference <a href="http://techfort.github.io/LokiJS/index.html">LokiJS</a></p>
+<a href="https://npmjs.org/package/@web3-systems/multichain-database"><img src="https://img.shields.io/npm/v/@web3-systems/multichain-database.svg" alt="Version"></a>
+<a href="https://npmjs.org/package/@web3-systems/multichain-database"><img src="https://img.shields.io/npm/dw/@web3-systems/multichain-database.svg" alt="Downloads/week"></a></p>
 
 <a href="#💾-installation" id="💾-installation" style="color: inherit; text-decoration: none;">
-  <h1>💾 Installation</h1>
+  <h3>💾 Installation</h3>
 </a>
-<p>Install NPM package:</p>
 <pre><code class="language-sh"><span class="hl-0">npm install @web3-systems/multichain-database</span>
 </code></pre>
 <pre><code class="language-sh"><span class="hl-0">yarn add @web3-systems/multichain-database</span>
 </code></pre>
-<p>Clone from Github:</p>
 <pre><code class="language-sh"><span class="hl-0">git clone https://github.com/web3-systems/multichain-database</span>
 </code></pre>
 
-<a href="#📖-overview" id="📖-overview" style="color: inherit; text-decoration: none;">
-  <h1>📖 Overview</h1>
+<a href="#🏎️-nbspquickstart" id="🏎️-nbspquickstart" style="color: inherit; text-decoration: none;">
+  <h3>🏎️ &nbsp;Quickstart</h3>
 </a>
-<p>The multichain databases/caches are managed using a <code>MultichainInMemoryDatabase</code> instance. The instance is an adapter for the LokiJS multi-environment, in-memory database with performant indexing and queries.</p>
-<ul>
-<li><a href="http://techfort.github.io/LokiJS/index.html">LokiJS</a></li>
-<li><a href="http://techfort.github.io/LokiJS/tutorial-Query%20Examples.html">Query Examples</a></li>
-<li><a href="http://techfort.github.io/LokiJS/tutorial-Persistence%20Adapters.html">Persistance Adapters</a></li>
-<li><a href="http://techfort.github.io/LokiJS/tutorial-Collection%20Transforms.html">Collection Transforms</a></li>
-<li><a href="http://techfort.github.io/LokiJS/tutorial-Indexing%20and%20Query%20performance.html">Indexing and Query Performance</a></li>
-</ul>
+<p>Coming soon...</p>
 
-<a href="#🏎️-quickstart" id="🏎️-quickstart" style="color: inherit; text-decoration: none;">
-  <h1>🏎️ Quickstart</h1>
+<a href="#📖-nbspoverview" id="📖-nbspoverview" style="color: inherit; text-decoration: none;">
+  <h3>📖 &nbsp;Overview</h3>
 </a>
-<p>In just a few lines a new chain database can be initialized - enabling advanced search queries in both browsers and backends.</p>
-<pre><code class="language-ts"><span class="hl-1">import</span><span class="hl-0"> </span><span class="hl-2">MultichainInMemoryDatabase</span><span class="hl-0"> </span><span class="hl-1">from</span><span class="hl-0"> </span><span class="hl-3">&#39;@web3-systems/multichain-database&#39;</span><span class="hl-0">;</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">chainIdDefault</span><span class="hl-0"> = </span><span class="hl-6">1</span><span class="hl-0">;</span><br/><span class="hl-4">let</span><span class="hl-0"> </span><span class="hl-2">inMemoryDatabase</span><span class="hl-0">: </span><span class="hl-7">MultichainInMemoryDatabase</span><span class="hl-0">;</span><br/><span class="hl-2">inMemoryDatabase</span><span class="hl-0"> = </span><span class="hl-4">new</span><span class="hl-0"> </span><span class="hl-8">MultichainInMemoryDatabase</span><span class="hl-0">(</span><span class="hl-2">chainIdDefault</span><span class="hl-0">);</span><br/><span class="hl-2">inMemoryDatabase</span><span class="hl-0">.</span><span class="hl-8">initializeDefaultCollections</span><span class="hl-0">(</span><span class="hl-2">chainIdDefault</span><span class="hl-0">, </span><span class="hl-3">&#39;indexeddb&#39;</span><span class="hl-0">);</span><br/><span class="hl-2">inMemoryDatabase</span><span class="hl-0">.</span><span class="hl-8">insertMultiple</span><span class="hl-0">(</span><span class="hl-3">&#39;transactions&#39;</span><span class="hl-0">, </span><span class="hl-2">transactionList</span><span class="hl-0">, </span><span class="hl-2">chainIdDefault</span><span class="hl-0">);</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">findQuery</span><span class="hl-0"> = {</span><span class="hl-2">data:</span><span class="hl-0"> { </span><span class="hl-2">$eq:</span><span class="hl-0"> </span><span class="hl-3">&#39;0x0&#39;</span><span class="hl-0"> }};</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">documents</span><span class="hl-0"> = </span><span class="hl-2">inMemoryDatabase</span><span class="hl-0">.</span><span class="hl-8">find</span><span class="hl-0">(</span><span class="hl-3">&#39;transactions&#39;</span><span class="hl-0">, </span><span class="hl-2">findQuery</span><span class="hl-0">, </span><span class="hl-2">chainIdDefault</span><span class="hl-0">);</span>
-</code></pre>
+<p>Coming soon...</p>
 
-<a href="#🪜-examples" id="🪜-examples" style="color: inherit; text-decoration: none;">
-  <h1>🪜 Examples</h1>
+<a href="#🧩-nbspexamples" id="🧩-nbspexamples" style="color: inherit; text-decoration: none;">
+  <h3>🧩 &nbsp;Examples</h3>
 </a>
+<p>Coming soon...</p>
 
-<a href="#simple-search---findquery" id="simple-search---findquery" style="color: inherit; text-decoration: none;">
-  <h3>Simple Search - FindQuery</h3>
-</a>
-<p><strong>The primary operators currently supported are:</strong></p>
-<p><code>$eq</code> - filter for document(s) with property of (strict) equality <br/>
-<code>$ne</code> - filter for document(s) with property not equal to provided value <br/>
-<code>$aeq</code> - filter for document(s) with property of abstract (loose) equality <br/>
-<code>$dteq</code> - filter for document(s) with date property equal to provided date value <br/>
-<code>$gt</code> - filter for document(s) with property greater than provided value <br/>
-<code>$gte</code> - filter for document(s) with property greater or equal to provided value <br/>
-<code>$lt</code> - filter for document(s) with property less than provided value <br/>
-<code>$lte</code> - filter for document(s) with property less than or equal to provided value <br/>
-<code>$between</code> - filter for documents(s) with property between provided vals. <br/></p>
-
-<a href="#find-transaction-hash" id="find-transaction-hash" style="color: inherit; text-decoration: none;">
-  <h4><strong>Find Transaction Hash</strong></h4>
-</a>
-<p>To find a single transaction use a find query with an equal operator matching the hash.</p>
-<pre><code class="language-ts"><span class="hl-1">export</span><span class="hl-0"> </span><span class="hl-4">interface</span><span class="hl-0"> </span><span class="hl-7">FindQuery</span><span class="hl-0"> {</span><br/><span class="hl-0">  [</span><span class="hl-2">key</span><span class="hl-0">: </span><span class="hl-7">string</span><span class="hl-0">]: </span><span class="hl-7">any</span><span class="hl-0">;</span><br/><span class="hl-0">}</span>
-</code></pre>
-<p>The <code>FindQuery</code> object is similar to a <a href="https://docs.mongodb.com/manual/reference/method/db.collection.find/">MongoDB find filter object</a>.</p>
-<pre><code class="language-ts"><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">findQuery</span><span class="hl-0"> = {</span><br/><span class="hl-0">    </span><span class="hl-2">hash:</span><span class="hl-0"> { </span><br/><span class="hl-0">        </span><span class="hl-2">$eq:</span><span class="hl-0"> </span><span class="hl-3">&#39;0x0&#39;</span><span class="hl-0"> </span><br/><span class="hl-0">    },</span><br/><span class="hl-0">};</span>
-</code></pre>
-
-<a href="#advanced-search---chainedquery" id="advanced-search---chainedquery" style="color: inherit; text-decoration: none;">
-  <h3>Advanced Search - ChainedQuery</h3>
-</a>
-<p><strong>ChainedQuery Interface</strong>
-All inputs are optional when constucting a chained query.</p>
-<pre><code class="language-ts"><span class="hl-1">export</span><span class="hl-0"> </span><span class="hl-4">interface</span><span class="hl-0"> </span><span class="hl-7">ChainedQuery</span><span class="hl-0"> {</span><br/><span class="hl-0">  </span><span class="hl-2">find</span><span class="hl-0">?: </span><span class="hl-7">any</span><span class="hl-0">;</span><br/><span class="hl-0">  </span><span class="hl-2">where</span><span class="hl-0">?: </span><span class="hl-7">any</span><span class="hl-0">;</span><br/><span class="hl-0">  </span><span class="hl-2">simplesort</span><span class="hl-0">?: </span><span class="hl-7">any</span><span class="hl-0">;</span><br/><span class="hl-0">  </span><span class="hl-2">offset</span><span class="hl-0">?: </span><span class="hl-7">any</span><span class="hl-0">;</span><br/><span class="hl-0">  </span><span class="hl-2">limit</span><span class="hl-0">?: </span><span class="hl-7">any</span><span class="hl-0">;</span><br/><span class="hl-0">}</span>
-</code></pre>
-<p><strong>Basic ChainedQuery</strong></p>
-<p>A straight-forward example is using <code>limit</code> and <code>find</code> to return the first a single transaction matching the data inputs.</p>
-<pre><code class="language-ts"><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">chainedQuery</span><span class="hl-0"> = {</span><br/><span class="hl-0">    </span><span class="hl-2">limit:</span><span class="hl-0"> </span><span class="hl-6">1</span><span class="hl-0">,</span><br/><span class="hl-0">    </span><span class="hl-2">find:</span><span class="hl-0"> {</span><br/><span class="hl-0">        </span><span class="hl-2">data:</span><span class="hl-0"> {</span><br/><span class="hl-0">            </span><span class="hl-2">$eq:</span><span class="hl-0"> </span><span class="hl-3">&#39;0x2&#39;</span><br/><span class="hl-0">        },</span><br/><span class="hl-0">    },</span><br/><span class="hl-0">};</span><br/><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">documents</span><span class="hl-0"> = </span><span class="hl-2">inMemoryDatabase</span><span class="hl-0">.</span><span class="hl-8">search</span><span class="hl-0">(</span><span class="hl-3">&#39;transactions&#39;</span><span class="hl-0">, </span><span class="hl-2">chainedQuery</span><span class="hl-0">, </span><span class="hl-6">1</span><span class="hl-0">);</span><br/><span class="hl-9">/*</span><br/><span class="hl-9">    [</span><br/><span class="hl-9">        {</span><br/><span class="hl-9">            hash: &#39;0x0&#39;,</span><br/><span class="hl-9">            data: &#39;0x2&#39;,</span><br/><span class="hl-9">        }</span><br/><span class="hl-9">    ]</span><br/><span class="hl-9">*/</span>
-</code></pre>
-<p><strong>Complex ChainedQuery</strong></p>
-<p>A straight-forward example is using <code>limit</code> and <code>find</code> to return the first a single transaction matching the data inputs.</p>
-<pre><code class="language-ts"><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">chainedQuery</span><span class="hl-0"> = {</span><br/><span class="hl-0">    </span><span class="hl-2">offset:</span><span class="hl-0"> </span><span class="hl-6">0</span><span class="hl-0">,</span><br/><span class="hl-0">    </span><span class="hl-2">limit:</span><span class="hl-0"> </span><span class="hl-6">10</span><span class="hl-0">,</span><br/><span class="hl-0">    </span><span class="hl-2">find:</span><span class="hl-0"> {</span><br/><span class="hl-0">        </span><span class="hl-2">data:</span><span class="hl-0"> {</span><br/><span class="hl-0">            </span><span class="hl-2">$eq:</span><span class="hl-0"> </span><span class="hl-3">&#39;0x2&#39;</span><br/><span class="hl-0">        },</span><br/><span class="hl-0">    },</span><br/><span class="hl-0">    </span><span class="hl-2">simplesort:</span><span class="hl-0"> </span><span class="hl-3">&#39;blockNumber&#39;</span><span class="hl-0">,</span><br/><span class="hl-0">    </span><span class="hl-8">where</span><span class="hl-2">:</span><span class="hl-0"> () </span><span class="hl-4">=&gt;</span><span class="hl-0">{},</span><br/><span class="hl-0">};</span><br/><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">documents</span><span class="hl-0"> = </span><span class="hl-2">inMemoryDatabase</span><span class="hl-0">.</span><span class="hl-8">search</span><span class="hl-0">(</span><span class="hl-3">&#39;transactions&#39;</span><span class="hl-0">, </span><span class="hl-2">chainedQuery</span><span class="hl-0">, </span><span class="hl-6">1</span><span class="hl-0">);</span><br/><span class="hl-9">/*</span><br/><span class="hl-9">    [</span><br/><span class="hl-9">        {</span><br/><span class="hl-9">            hash: &#39;0x0&#39;,</span><br/><span class="hl-9">            data: &#39;0x2&#39;,</span><br/><span class="hl-9">        }</span><br/><span class="hl-9">    ]</span><br/><span class="hl-9">*/</span>
-</code></pre>
-
-<a href="#💻-developer-experience" id="💻-developer-experience" style="color: inherit; text-decoration: none;">
-  <h1>💻 Developer Experience</h1>
+<a href="#💻-nbspdeveloper-experience" id="💻-nbspdeveloper-experience" style="color: inherit; text-decoration: none;">
+  <h3>💻 &nbsp;Developer Experience</h3>
 </a>
 <p>The package is setup using the <a href="https://tsdx.io/">TSDX zero-config CLI</a> which includes:</p>
 <ul>
