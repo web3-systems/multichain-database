@@ -3,7 +3,7 @@ import Dexie from 'dexie';
 import { AccountMeta } from './types';
 
 /**
- * @class MultiChainBrowserIndexedDatabase
+ * @class MultiChainMetaDatabase
  * @description A class for managing browser IndexedDB database of Web3 Entities cross-chain metadata.
  */
 class MultiChainMetaDatabase extends Dexie {
@@ -12,6 +12,7 @@ class MultiChainMetaDatabase extends Dexie {
     super(`meta-evm`);
     this.version(1).stores({
       accounts: '&address, chainBase, chainsActive, chains',
+      compute: '++id, name',
     });
   }
 }
