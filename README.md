@@ -1,4 +1,4 @@
-# 🗄️ Multichain Database
+# 🗄️ MultiChain Database
 
 ![Build](https://github.com/web3-systems/multichain-database/actions/workflows/main.yml/badge.svg)
 [![Coverage Status](https://coveralls.io/repos/github/web3-systems/multichain-database/badge.svg?branch=main)](https://coveralls.io/github/web3-systems/multichain-database?branch=main)

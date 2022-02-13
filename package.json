@@ -31,7 +31,10 @@
     "clean:test": "jest --clearCache",
     "docs": "yarn typedoc --plugin typedoc-plugin-markdown --hideBreadcrumbs true --namedAnchors true",
     "docs:html": "yarn typedoc --plugin none --out docs",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "postinstall": "husky install",
+    "prepublishOnly": "pinst --disable",
+    "postpublish": "pinst --enable"
   },
   "peerDependencies": {},
   "dependencies": {
@@ -50,6 +53,7 @@
     "debug": "^4.3.3",
     "eslint-config-prettier": "^6.0.0",
     "husky": "^7.0.4",
+    "pinst": "^2.1.6",
     "prettier": "^1.19.1",
     "tsdx": "^0.14.1",
     "tslib": "^2.3.1",
@@ -59,7 +63,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "tsdx lint"
+      "pre-commit": "tsdx test",
+      "pre-push": "tsdx build"
     }
   },
   "prettier": {
