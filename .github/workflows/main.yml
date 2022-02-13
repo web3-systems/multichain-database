@@ -25,9 +25,6 @@ jobs:
         with:
           useLockFile: false
 
-      - name: Lint
-        run: yarn lint
-
       - name: Test
         run: ETHERSCAN_API_KEY=${{ env.ETHERSCAN_API_KEY }} yarn test --ci --coverage --maxWorkers=2
 
