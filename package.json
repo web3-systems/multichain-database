@@ -1,7 +1,7 @@
 {
   "name": "@web3-systems/multichain-database",
   "description": "MultiChain database for Web3 Entities: Accounts, Transactions, Contracts, Logs, Sets and Computations",
-  "private": true,
+  "private": false,
   "author": "Kames Geraghty",
   "license": "MIT",
   "version": "0.1.0",
@@ -32,7 +32,7 @@
     "docs": "yarn typedoc --plugin typedoc-plugin-markdown --hideBreadcrumbs true --namedAnchors true",
     "docs:html": "yarn typedoc --plugin none --out docs",
     "prepare": "husky install",
-    "postinstall": "husky install",
+    "_postinstall": "husky install",
     "prepublishOnly": "pinst --disable",
     "postpublish": "pinst --enable"
   },

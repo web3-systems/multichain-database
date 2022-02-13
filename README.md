@@ -7,9 +7,12 @@
 [![Downloads/week](https://img.shields.io/npm/dw/web3-systems/multichain-database.svg)](https://npmjs.org/package/web3-systems/multichain-database)
 
 
-The `@web3-systems/multichain-database` [node module](https://www.npmjs.com/package/@web3-systems/multichain-database) is a MultiChain database system for Web3 Entities: Accounts, Transactions, Contracts, Logs, Sets and Computations.
 
-[Documentation](https://github.com/web3-systems/multichain-database/tree/main/docs) - [MultiScan Client](https://github.com/web3-systems/multiscan-client) - [MultiChain Providers](https://github.com/web3-systems/multichain-providers) - [React MultiChain](https://github.com/web3-systems/react-multichain)
+[**API Documentation**](https://github.com/web3-systems/multichain-database/tree/main/docs)
+
+[MultiScan Client](https://github.com/web3-systems/multiscan-client) - [MultiChain Providers](https://github.com/web3-systems/multichain-providers) - [React MultiChain](https://github.com/web3-systems/react-multichain)
+
+The `@web3-systems/multichain-database` [node module](https://www.npmjs.com/package/@web3-systems/multichain-database) is a MultiChain database system for Web3 Entities: Accounts, Transactions, Contracts, Logs, Sets and Computations.
 
 ### 💾 Installation
 
@@ -37,4 +40,4 @@ The module is built using [TSDX zero-config CLI](https://tsdx.io/) which include
 
 <hr />
 
-Copyright (c) 2022 [Web3 Systems](https://web3-systems.io)
+Copyright 2022 [Kames Geraghty](https://web3-systems.io)
