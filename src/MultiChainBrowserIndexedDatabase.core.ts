@@ -1,6 +1,7 @@
-import Dexie from 'dexie/dist/dexie.js';
-import { Log, TransactionRequest } from '@ethersproject/providers';
 import { FilterByBlockHash } from '@ethersproject/abstract-provider';
+import { Log, TransactionRequest } from '@ethersproject/providers';
+import Dexie from 'dexie/dist/dexie.js';
+
 import { Account, Contracts, TransactionAndReceipt } from './types';
 
 /**

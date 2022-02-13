@@ -1,6 +1,6 @@
-import MultiChainIndexedDatabaseClient from './MultiChainIndexedDatabaseClient';
 import MultiChainBrowserIndexedDatabase from './MultiChainBrowserIndexedDatabase.core';
 import MultiChainBrowserIndexedDatabaseMeta from './MultiChainBrowserIndexedDatabase.meta';
+import MultiChainIndexedDatabaseClient from './MultiChainIndexedDatabaseClient';
 import MultichainInMemoryDatabaseClient from './MultichainInMemoryDatabaseClient';
 export * from './types';
 export {

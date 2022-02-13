@@ -1,12 +1,7 @@
-import MultiChainDatabase from '../src/MultiChainDatabase';
+import MultiChainIndexedDatabaseClient from '../src/MultiChainIndexedDatabaseClient';
 
-describe('MultiChainDatabase', () => {
-  it('should succeed to import MultiChainDatabase', () => {
-    expect(MultiChainDatabase).toBeTruthy();
-  });
-
-  it('should succeed to initialize MultiChainDatabase', () => {
-    const dbChain1 = new MultiChainDatabase(1);
-    console.log(dbChain1);
+describe('MultiChainIndexedDatabaseClient', () => {
+  it('should succeed to import MultiChainIndexedDatabaseClient', () => {
+    expect(MultiChainIndexedDatabaseClient).toBeTruthy();
   });
 });

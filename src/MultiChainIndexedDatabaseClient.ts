@@ -20,12 +20,15 @@ class MultiChainDatabaseClient {
   // DATABASES
   /* -------------------------------------------------------------------------- */
 
-  createDatabase(chainId: number, onReady?: Function): MultiChainBrowserIndexedDatabase {
+  createDatabase(
+    chainId: number,
+    onReady?: Function
+  ): MultiChainBrowserIndexedDatabase {
     const id = `evm-${chainId}`;
     this.databases[id] = new MultiChainBrowserIndexedDatabase(chainId);
     this.databases[id].on('ready', () => onReady && onReady());
-    this.databases[id].open()
-    return this.databases[id]
+    this.databases[id].open();
+    return this.databases[id];
   }
 
   getDatabase(chainId?: number): MultiChainBrowserIndexedDatabase {
@@ -63,7 +66,7 @@ class MultiChainDatabaseClient {
     const database = this.getDatabase(chainId);
     return database.table(table).bulkAdd(documents, keys);
   }
-  
+
   bulkDelete(table: string, keys: any, chainId?: number) {
     const database = this.getDatabase(chainId);
     return database.table(table).bulkDelete(keys);
@@ -91,7 +94,10 @@ class MultiChainDatabaseClient {
 
   filter(table: string, filterFunction: any, chainId?: number) {
     const database = this.getDatabase(chainId);
-    return database.table(table).filter(filterFunction).toArray();
+    return database
+      .table(table)
+      .filter(filterFunction)
+      .toArray();
   }
 
   get(table: string, idOrFilterObject: any, chainId?: number) {

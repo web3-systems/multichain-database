@@ -6,14 +6,12 @@
 [![GPLv3 license](https://img.shields.io/badge/License-MIT-blue.svg)](http://perso.crans.org/besson/LICENSE.html)
 ![npm](https://img.shields.io/npm/v/@web3-systems/multichain-database)
 
+[API Documentation](https://github.com/web3-systems/multichain-database/tree/main/docs) 
+
 The `@web3-systems/multichain-database` [node module](https://www.npmjs.com/package/@web3-systems/multichain-database) is a MultiChain database system for Web3 Entities: Accounts, Transactions, Contracts, Logs, Sets and Computations.
 
-[Documentation](https://github.com/web3-systems/multichain-database/tree/main/docs) 
 
-
-<span style="fontSize:10px;">💾<span>
-Installation
-===============
+### 💾 Installation
 
 ```sh
 npm install @web3-systems/multichain-database
@@ -27,11 +25,7 @@ yarn add @web3-systems/multichain-database
 git clone https://github.com/web3-systems/multichain-database
 ```
 
-# Quickstart
-
-Common Web3 entities like Transactions and Contracts are mapped to database schemas.
-
-# 💻 Developer Experience
+### 💻 Developer Experience
 
 The module is built using [TSDX zero-config CLI](https://tsdx.io/) which includes:
 

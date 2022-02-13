@@ -1,6 +1,6 @@
 {
   "name": "@web3-systems/multichain-database",
-  "description": "Database for multichain EVM state: transactions, receipts, logs and memoized computes",
+  "description": "MultiChain database for Web3 Entities: Accounts, Transactions, Contracts, Logs, Sets and Computations",
   "private": true,
   "author": "Kames Geraghty",
   "license": "MIT",
@@ -30,10 +30,10 @@
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf .cache",
     "clean:test": "jest --clearCache",
     "docs": "yarn typedoc --plugin typedoc-plugin-markdown --hideBreadcrumbs true --namedAnchors true",
-    "docs:html": "yarn typedoc --plugin none --out docs"
+    "docs:html": "yarn typedoc --plugin none --out docs",
+    "prepare": "husky install"
   },
-  "peerDependencies": {
-  },
+  "peerDependencies": {},
   "dependencies": {
     "@ethersproject/bignumber": "^5.5.0",
     "@ethersproject/providers": "^5.5.3",

@@ -1,7 +1,7 @@
 import { Collection, DynamicView } from 'lokijs';
-import { FindQuery, ChainedQuery } from './types';
-import { defaultCollections } from './config/database.collections';
 
+import { defaultCollections } from './config/database.collections';
+import { FindQuery, ChainedQuery } from './types';
 import {
   createAdapterOptions,
   createDatabaseInstance,

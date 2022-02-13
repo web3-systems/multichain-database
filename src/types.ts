@@ -1,6 +1,6 @@
-import { BigNumberish } from "@ethersproject/bignumber";
-import { Log } from "@ethersproject/providers";
-import { AccessListish } from "@ethersproject/transactions";
+import { BigNumberish } from '@ethersproject/bignumber';
+import { Log } from '@ethersproject/providers';
+import { AccessListish } from '@ethersproject/transactions';
 
 export interface Database extends Loki {}
 
