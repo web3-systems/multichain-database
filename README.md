@@ -36,4 +36,5 @@ The module is built using [TSDX zero-config CLI](https://tsdx.io/) which include
 - ESLint
 
 <hr />
+
 Copyright (c) 2022 [Web3 Systems](https://web3-systems.io)
