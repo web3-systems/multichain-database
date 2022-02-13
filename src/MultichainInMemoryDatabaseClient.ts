@@ -1,6 +1,7 @@
 import { Collection, DynamicView } from 'lokijs';
 import { FindQuery, ChainedQuery } from './types';
 import { defaultCollections } from './config/database.collections';
+
 import {
   createAdapterOptions,
   createDatabaseInstance,
@@ -10,13 +11,23 @@ import {
 } from './utils';
 import errorCollectionDoesNotExist from './utils/errorCollectionDoesNotExist';
 
-class MultichainInMemoryDatabase {
-  databases: any = {};
-  chainIdDefault: number = 1;
+interface DatabaseOptions {
+  adapter: string;
+  autoload?: boolean;
+  autoloadCallback?: Function;
+  autosave?: boolean;
+  autosaveInterval?: number;
+}
 
-  constructor(chainIdDefault?: number, adapterType?: string) {
-    if (chainIdDefault) {
-      this.create(chainIdDefault, adapterType);
+class MultichainInMemoryDatabase {
+  chainIdDefault: number = 1;
+  databases: {
+    [key: string]: Loki;
+  } = {};
+
+  constructor(chainIdDefault?: number, options?: DatabaseOptions) {
+    if (chainIdDefault && options) {
+      this.create(chainIdDefault, options);
       this.chainIdDefault = chainIdDefault || 1;
     }
     return this;
@@ -30,20 +41,12 @@ class MultichainInMemoryDatabase {
   // DATABASES
   /* -------------------------------------------------------------------------- */
 
-  create(
-    chainId: number,
-    adapterType: string = 'environment',
-    adapterOptions?: object,
-    useDefaultCollections?: boolean
-  ): Loki {
+  create(chainId: number, options: DatabaseOptions): Loki {
     const id = getDatabaseId(chainId);
-    const adapter = selectAdapter(adapterType);
-    const options = createAdapterOptions(adapter, adapterOptions);
-    const database = createDatabaseInstance(id, options);
-    const collectionsToInitialize = useDefaultCollections
-      ? defaultCollections
-      : [];
-    addCollectionsToDatabaseInstance(database, collectionsToInitialize);
+    if (this.databases[id]) return this.databases[id];
+    const adapter = selectAdapter(options?.adapter);
+    const adapterOptions = createAdapterOptions(adapter, options);
+    const database = createDatabaseInstance(id, adapterOptions);
     this.databases[id] = database;
     return database;
   }
@@ -58,10 +61,12 @@ class MultichainInMemoryDatabase {
     return database.serialize();
   }
 
-  get(chainId?: number) {
+  get(chainId?: number): Loki {
     const id = getDatabaseId(chainId || this.chainIdDefault);
     if (!this.databases[id]) {
-      this.create(chainId || this.chainIdDefault);
+      this.create(chainId || this.chainIdDefault, {
+        adapter: 'environment',
+      });
     }
     return this.databases[id];
   }
@@ -72,7 +77,7 @@ class MultichainInMemoryDatabase {
     this.databases[id].deleteDatabase();
   }
 
-  save(chainId?: number, callback?: Function): void {
+  save(chainId?: number, callback?: any): void {
     const database = this.get(chainId || this.chainIdDefault);
     database.save(callback);
   }
@@ -86,6 +91,28 @@ class MultichainInMemoryDatabase {
     this.save(chainId);
   }
 
+  addEventHook(
+    collection: string,
+    event: string,
+    hook: any,
+    chainId?: number
+  ): void {
+    const Collection = this.getCollection(collection, chainId);
+    Collection.on(event, hook);
+  }
+
+  addEventsHook(collection: string, hook: any, chainId?: number): void {
+    const Collection = this.getCollection(collection, chainId);
+    const _events = [
+      'insert',
+      'update',
+      'remove',
+      'findAndRemove',
+      'findAndUpdate',
+    ];
+    Collection.on(_events, hook);
+  }
+
   addCollection(collection: object, chainId?: number): void {
     this.addCollections([collection], chainId);
   }
@@ -96,7 +123,7 @@ class MultichainInMemoryDatabase {
   }
 
   getCollection(collectionName: string, chainId?: number): Collection {
-    const database = this.get(chainId);
+    const database = this.get(chainId || this.chainIdDefault);
     const collectionObject = database.getCollection(collectionName);
     errorCollectionDoesNotExist(collectionName, collectionObject);
     return collectionObject;
@@ -139,24 +166,43 @@ class MultichainInMemoryDatabase {
     chainId?: number
   ): Array<any> {
     const collectionObject = this.getCollection(collection, chainId);
-    const chaining = collectionObject.chain();
+    let chaining = collectionObject.chain();
     const keys = Object.keys(query);
     const values = Object.values(query);
     for (let index = 0; index < keys.length; index++) {
       // @ts-ignore
-      chaining[keys[index]](values[index]);
+      chaining = chaining[keys[index]](values[index]);
     }
     return chaining.data();
   }
 
+  getDocument(
+    collection: string,
+    id: number,
+    returnPosition: boolean,
+    chainId?: number
+  ) {
+    return this.getCollection(collection, chainId).get(id, returnPosition);
+  }
+
+  getDynamicView(collection: string, name: string, chainId?: number) {
+    return this.getCollection(collection, chainId).getDynamicView(name);
+  }
+
+  getTransform(collection: string, name: string, chainId?: number) {
+    return this.getCollection(collection, chainId).getTransform(name);
+  }
+
   find(collection: string, find: FindQuery, chainId?: number): Array<any> {
-    const collectionObject = this.getCollection(collection, chainId);
-    return collectionObject.find(find);
+    return this.getCollection(collection, chainId).find(find);
+  }
+
+  findOne(collection: string, find: any, chainId?: number): any {
+    return this.getCollection(collection, chainId).findOne(find);
   }
 
   count(collection: string, chainId?: number): number {
-    const collectionObject = this.getCollection(collection, chainId);
-    return collectionObject.count();
+    return this.getCollection(collection, chainId).count();
   }
 
   /* -------------------------------------------------------------------------- */
@@ -164,18 +210,57 @@ class MultichainInMemoryDatabase {
   /* -------------------------------------------------------------------------- */
 
   insert(collection: string, data: any, chainId?: number): void {
-    const collectionObject = this.getCollection(collection);
-    collectionObject.insert(data);
+    const Collection = this.getCollection(collection, chainId);
+    Collection.insert(data);
+    Collection.emit('insert', {
+      event: 'insert',
+      collection: collection,
+    });
     this.save(chainId);
   }
 
-  insertBatch(collection: string, data: Array<any>, chainId?: number): void {
-    this.insert(collection, data, chainId);
+  update(collection: string, data: any, chainId?: number): void {
+    const Collection = this.getCollection(collection, chainId);
+    Collection.update(data);
+    Collection.emit('update', {
+      event: 'update',
+      collection: collection,
+    });
+    this.save(chainId);
   }
 
-  update(collection: string, data: any, chainId?: number): void {
-    const collectionObject = this.getCollection(collection);
-    collectionObject.update(data);
+  remove(collection: string, document: any, chainId?: number): void {
+    const Collection = this.getCollection(collection, chainId);
+    Collection.remove(document);
+    Collection.emit('remove', {
+      event: 'remove',
+      collection: collection,
+    });
+    this.save(chainId);
+  }
+
+  findAndRemove(collection: string, find: FindQuery, chainId?: number): void {
+    const Collection = this.getCollection(collection, chainId);
+    Collection.findAndRemove(find);
+    Collection.emit('findAndRemove', {
+      event: 'findAndRemove',
+      collection: collection,
+    });
+    this.save(chainId);
+  }
+
+  findAndUpdate(
+    collection: string,
+    find: FindQuery,
+    updateFunction: any,
+    chainId?: number
+  ): void {
+    const Collection = this.getCollection(collection, chainId);
+    Collection.findAndUpdate(find, updateFunction);
+    Collection.emit('findAndUpdate', {
+      event: 'findAndUpdate',
+      collection: collection,
+    });
     this.save(chainId);
   }
 }

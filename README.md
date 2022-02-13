@@ -1,11 +1,12 @@
-# Multichain In-Memory Database
-![Build](https://github.com/web3-systems/multichain-in-memory-database/actions/workflows/main.yml/badge.svg)
-[![Coverage Status](https://coveralls.io/repos/github/web3-systems/multichain-in-memory-database/badge.svg?branch=main)](https://coveralls.io/github/web3-systems/multichain-in-memory-database?branch=main)
+# Multichain Database
+
+![Build](https://github.com/web3-systems/multichain-database/actions/workflows/main.yml/badge.svg)
+[![Coverage Status](https://coveralls.io/repos/github/web3-systems/multichain-database/badge.svg?branch=main)](https://coveralls.io/github/web3-systems/multichain-database?branch=main)
 ![ts](https://badgen.net/badge/-/TypeScript?icon=typescript&label&labelColor=blue&color=555555)
 [![GPLv3 license](https://img.shields.io/badge/License-MIT-blue.svg)](http://perso.crans.org/besson/LICENSE.html)
-![npm](https://img.shields.io/npm/v/@web3-systems/multichain-in-memory-database)
+![npm](https://img.shields.io/npm/v/@web3-systems/multichain-database)
 
-The `@web3-systems/multichain-in-memory-database` [node module](https://www.npmjs.com/package/@web3-systems/multichain-in-memory-database) is an in-memory database for multichain EVM state: transactions, receipts, logs and memoized computes.
+The `@web3-systems/multichain-database` [node module](https://www.npmjs.com/package/@web3-systems/multichain-database) is an in-memory database for multichain EVM state: transactions, receipts, logs and memoized computes.
 
 Blockchain state is loaded into the memory for high-performance queries in both the browser and backend systems.
 
@@ -16,17 +17,17 @@ To learn more about indexing, queries, DynamicViews and other database related f
 Install NPM package:
 
 ```sh
-npm install @web3-systems/multichain-in-memory-database
+npm install @web3-systems/multichain-database
 ```
 
 ```sh
-yarn add @web3-systems/multichain-in-memory-database
+yarn add @web3-systems/multichain-database
 ```
 
 Clone from Github:
 
 ```sh
-git clone https://github.com/web3-systems/multichain-in-memory-database
+git clone https://github.com/web3-systems/multichain-database
 ```
 
 # 📖 Overview
@@ -44,7 +45,7 @@ The multichain databases/caches are managed using a `MultichainInMemoryDatabase`
 In just a few lines a new chain database can be initialized - enabling advanced search queries in both browsers and backends.
 
 ```ts
-import MultichainInMemoryDatabase from '@web3-systems/multichain-in-memory-database';
+import MultichainInMemoryDatabase from '@web3-systems/multichain-database';
 const chainIdDefault = 1;
 let inMemoryDatabase: MultichainInMemoryDatabase;
 inMemoryDatabase = new MultichainInMemoryDatabase(chainIdDefault);

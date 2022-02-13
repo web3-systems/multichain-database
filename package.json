@@ -1,38 +1,55 @@
 {
-  "name": "@web3-systems/multichain-in-memory-database",
-  "description": "In-memory database for multichain EVM state: transactions, receipts, logs and memoized computes.",
-  "version": "0.1.0-beta.2",
-  "license": "MIT",
+  "name": "@web3-systems/multichain-database",
+  "description": "Database for multichain EVM state: transactions, receipts, logs and memoized computes",
+  "private": true,
   "author": "Kames Geraghty",
-  "module": "dist/multichain-in-memory-database.esm.js",
+  "license": "MIT",
+  "version": "0.1.0",
+  "homepage": "https://github.com/web3-systems/multichain-database",
+  "bugs": "https://github.com/web3-systems/multichain-database/issues",
+  "engines": {
+    "node": ">=10"
+  },
+  "module": "dist/multichain-database.esm.js",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
-  "scripts": {
-    "start": "tsdx watch",
-    "build": "tsdx build",
-    "test": "tsdx test",
-    "lint": "tsdx lint",
-    "prepare": "tsdx build",
-    "docs": "yarn typedoc src/index.ts --out docs"
-  },
   "files": [
     "dist",
     "src"
   ],
-  "engines": {
-    "node": ">=10"
+  "scripts": {
+    "build": "tsdx build",
+    "test": "tsdx test",
+    "lint": "tsdx lint",
+    "lint:fix": "tsdx lint --fix",
+    "watch": "tsdx watch",
+    "package:build": "tsdx build",
+    "package:lint": "tsdx lint",
+    "package:test": "tsdx test",
+    "package:watch": "tsdx watch",
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf .cache",
+    "clean:test": "jest --clearCache",
+    "docs": "yarn typedoc --plugin typedoc-plugin-markdown --hideBreadcrumbs true --namedAnchors true"
   },
-  "peerDependencies": {},
+  "peerDependencies": {
+  },
   "dependencies": {
+    "@ethersproject/bignumber": "^5.5.0",
+    "@ethersproject/providers": "^5.5.3",
+    "@ethersproject/transactions": "^5.5.0",
     "@types/lodash": "^4.14.178",
     "axios": "^0.24.0",
+    "dexie": "^3.2.0",
     "lodash": "^4.17.21",
     "lokijs": "^1.5.12",
     "query-string": "^7.0.1"
   },
   "devDependencies": {
     "@types/lokijs": "^1.5.7",
+    "debug": "^4.3.3",
+    "eslint-config-prettier": "^6.0.0",
     "husky": "^7.0.4",
+    "prettier": "^1.19.1",
     "tsdx": "^0.14.1",
     "tslib": "^2.3.1",
     "typedoc": "^0.22.10",
