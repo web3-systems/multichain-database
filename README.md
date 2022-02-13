@@ -27,6 +27,10 @@ yarn add @web3-systems/multichain-database
 git clone https://github.com/web3-systems/multichain-database
 ```
 
+# Quickstart
+
+Common Web3 entities like Transactions and Contracts are mapped to database schemas.
+
 # 💻 Developer Experience
 
 The module is built using [TSDX zero-config CLI](https://tsdx.io/) which includes:
