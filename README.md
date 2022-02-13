@@ -3,12 +3,12 @@
 ![CI](https://github.com/web3-systems/multichain-database/actions/workflows/main.yml/badge.svg)
 ![TS](https://badgen.net/badge/-/TypeScript?icon=typescript&label&labelColor=blue&color=555555)
 [![GPLv3 license](https://img.shields.io/badge/License-MIT-blue.svg)](http://perso.crans.org/besson/LICENSE.html)
-[![Version](https://img.shields.io/npm/v/web3-systems/multichain-database.svg)](https://npmjs.org/package/@web3-systems/multichain-database)
-[![Downloads/week](https://img.shields.io/npm/dw/web3-systems/multichain-database.svg)](https://npmjs.org/package/@web3-systems/multichain-database)
+[![Version](https://img.shields.io/npm/v/@web3-systems/multichain-database.svg)](https://npmjs.org/package/@web3-systems/multichain-database)
+[![Downloads/week](https://img.shields.io/npm/dw/@web3-systems/multichain-database.svg)](https://npmjs.org/package/@web3-systems/multichain-database)
 
 The `@web3-systems/multichain-database` [node module](https://www.npmjs.com/package/@web3-systems/multichain-database) is a MultiChain database system for Web3 Entities: Accounts, Transactions, Contracts, Logs, Sets and Computations.
 
-[**API Documentation**](https://github.com/web3-systems/multichain-database/tree/main/docs) 👈🏻 👈🏾
+👉🏾 👉 [**API Documentation**](https://web3-systems.github.io/multichain-database) 👈🏻 👈🏾
 
 ### 💾 Installation
 
