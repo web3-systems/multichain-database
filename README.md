@@ -4,7 +4,8 @@
 [![Coverage Status](https://coveralls.io/repos/github/web3-systems/multichain-database/badge.svg?branch=main)](https://coveralls.io/github/web3-systems/multichain-database?branch=main)
 ![ts](https://badgen.net/badge/-/TypeScript?icon=typescript&label&labelColor=blue&color=555555)
 [![GPLv3 license](https://img.shields.io/badge/License-MIT-blue.svg)](http://perso.crans.org/besson/LICENSE.html)
-![npm](https://img.shields.io/npm/v/@web3-systems/multichain-database)
+[![Version](https://img.shields.io/npm/v/web3-systems/multichain-database.svg)](https://npmjs.org/package/web3-systems/multichain-database)
+[![Downloads/week](https://img.shields.io/npm/dw/web3-systems/multichain-database.svg)](https://npmjs.org/package/web3-systems/multichain-database)
 
 [API Documentation](https://github.com/web3-systems/multichain-database/tree/main/docs) 
 
